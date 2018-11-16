@@ -1,0 +1,5 @@
+
+
+/*class RegisterViewModel extends BaseViewModel{
+
+}*/
