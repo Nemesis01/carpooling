@@ -1,28 +1,42 @@
 import 'package:carpooling/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Profile{
+class Profile {
+  ///   FIELDS
+  final String userId;
+  final int completedTrips;
+  final int transportedPassengers;
+  final List<String> favouriteDestinations;
+  final List<String> allDestinations;
+  final DocumentReference reference;
+
+  User user;
 
   ///
-  final User user;
-  int _completedTrips;
-  int _transportedPassengers;
-  List<String> _favouriteDestinations;
-  List<String> _allDestinations;
+  ///   CONSTRUCTORS
+  Profile.fromMap(Map<String, dynamic> map, {this.reference})
+      : assert(map['userId'] != null),
+        assert(map['completedTrips'] < 0),
+        assert(map['transportedPassengers'] < 0),
+        userId = map['userId'],
+        completedTrips = map['completedTrips'],
+        transportedPassengers = map['transportedPassengers'],
+        favouriteDestinations = map['favouriteDestinations'],
+        allDestinations = map['allDestinations'];
+
+  Profile.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data, reference: snapshot.reference);
 
   ///
-  Profile(this.user);
-
+  ///
+  ///   GETTERS AND SETTERS
 
   ///
-  /// GETTERS AND SETTERS
   ///
   ///
-  int get completedTrips => this._completedTrips;
-  int get transportedPassengers => this._transportedPassengers;
-  List<String> get favouriteDestinations => this._favouriteDestinations;
-  List<String> get allDestinations => this._allDestinations;
-
-
-
-
+  ///   OTHER METHODS
+  @override
+  String toString() {
+    return null;
+  }
 }

@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:carpooling/views/login.dart';
 import 'package:carpooling/views/home.dart';
-import 'package:carpooling/views/register.dart';
+import 'package:carpooling/views/login.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(new MyApp());
@@ -10,8 +9,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.blueAccent,
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.black,
       statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.light,
     ));
@@ -23,22 +22,29 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
         primaryColor: Colors.blue,
-        accentColor: Colors.blueAccent,
-        primaryColorDark: Colors.blue,
+        accentColor: Colors.white,
+        primaryColorDark: Colors.blueGrey,
         splashColor: Colors.lightBlueAccent,
         scaffoldBackgroundColor: Colors.white,
+        dividerColor: Colors.blueAccent,
         fontFamily: "EncodeCondensed",
         cardColor: Colors.white54,
-        primaryTextTheme: TextTheme(body1: TextStyle(color: Colors.black)),
-        dividerColor: Colors.blueAccent,
+        buttonColor: Colors.blue,
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.blue,
+          textTheme: ButtonTextTheme.primary,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          height: 40.0, //36.0
+        ),
+        //iconTheme: IconThemeData(size: 60.0)
         // bottomAppBarColor: Colors.black,
       ),
       routes: {
         '/': (context) => HomeScreen(),
-        //'/': (context) => RegisterScreen(),
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
-        '/register': (context) => RegisterScreen(),
+        //'/register': (context) => RegisterScreen(),
       },
       //home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );

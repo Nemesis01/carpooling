@@ -1,17 +1,14 @@
-class Constants{
-
-
+class Constants {
   static const String appName = "Comodo";
   static const String registerScreenTitle = "Sign Up";
   static const String loginScreenTitle = "Sign In";
 
+  // *******************************************
+  // *
+  // *  LOGIN SCREEN
+  // *
+  // *******************************************
 
-
-  /*******************************************
-   *
-   *  LOGIN SCREEN
-   *
-   * *****************************************/
   //static const String loginScreenTitle = "Login";
   static const String labelUsername = "Username";
   static const String labelPassword = "Password";
@@ -20,9 +17,11 @@ class Constants{
   static const String btnLogin = "Login";
   static const String hintPassword = "Type password here";
 
-  //**************************************************************************
-  //  SIGN UP SCREEN
-  //**************************************************************************
+  // **************************************************************************
+  // *
+  // *  SIGN UP SCREEN
+  // *
+  // **************************************************************************
   static const String labelFullName = "Full Name";
   static const String labelFirstName = "First Name";
   static const String labelLastName = "Last Name";
@@ -39,7 +38,6 @@ class Constants{
   static const String hintPhoneNumber = "+1(111)111-1111";
   static const String hintPasswordConfirmation = "Confirm your password";
 
-
   static const String txtAlreadyUser = "Already have an account ?";
   static const String txtCreateAccountTitle = "Create an account";
   static const String txtCreateAccountSubtitle = "A short description of why "
@@ -48,19 +46,17 @@ class Constants{
   static const String txtWelcome = "Welcome, ";
   static const String txtUsername = "user.name2365";
   static const String txtEmailPlaceholder = "user.name@domain.xyz";
-  static const String txtGladMessage = "We are glad to count you in the piins fa"
+  static const String txtGladMessage =
+      "We are glad to count you in the piins fa"
       "mily";
 
   static const String linkLogin = "Log In";
-
-
 
   static const String btnSignIn = "Sign In";
   static const String btnRegister = "Sign Up";
   static const String btnNext = "Next";
   static const String btnPrevious = "Previous";
   static const String btnSkip = "Skip";
-
 
   static const String errorMsgEmailFormat = "Wrong email format !";
   static const String errorEmptyField = "This field cannot be empty";
@@ -113,10 +109,11 @@ class Constants{
     '31'
   ];
 
-
-  /***********************************************************
-   *  HOME SCREEN
-   ***********************************************************/
+  // ***********************************************************
+  // *
+  // *  HOME SCREEN
+  // *
+  // ***********************************************************
   static final String menu_offers = "Offers";
   static final String menu_trips = "Trips";
   static final String menu_search = "Search";
@@ -124,26 +121,13 @@ class Constants{
   static final String menu_profile = "Profile";
   static final String menu_more = "More";
 
-  ///***********************************************************
-  /// Create a list of Years from 1900 to the current date year
-  ///***********************************************************
-  static List<String> generateYearsList(){
-    var currentYear = new DateTime.now().year;
-    List<String> years = new List();
-
-    for(int i = 1900; i <= currentYear; i++)
-      years.add(i.toString());
-
-    return years;
-  }
-
-
-/************************************************************
- *  PROFILE SCREEN
- ************************************************************/
+  // ************************************************************
+  // *
+  // *  PROFILE SCREEN
+  // *
+  // ************************************************************
   static final String labelInscriptionDate = "Member since :";
   static final String labelSectionContact = "Contact";
   static final String labelSectionComments = "Comments";
   static final String labelSectionInfos = "General informations";
-
 }

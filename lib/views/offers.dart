@@ -1,7 +1,6 @@
 import 'package:carpooling/models/offer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:carpooling/utils/constants.dart';
 
 final dummySnapshot = [
   {"offerer": "Stef", "departure": "TRO", "destination": "MTL"},
@@ -26,6 +25,7 @@ class _OfferScreenState extends State<OffersScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
+    /*
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('offers').snapshots(),
       builder: (context, snapshot) {
@@ -34,6 +34,13 @@ class _OfferScreenState extends State<OffersScreen> {
         return _buildList(context, snapshot.data.documents);
       },
     );
+    */
+
+    return FloatingActionButton(
+      child: Icon(Icons.add),
+      onPressed: () {},
+    );
+
     /*return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(

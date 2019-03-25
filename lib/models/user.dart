@@ -1,66 +1,48 @@
 import 'package:carpooling/models/profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User{
-
-  ///
+class User {
   ///     FIELDS
-  ///
-  String firstName;
-  String lastName;
-  String fullName;
-  String email;
-  String phone;
+  final String fullName;
+  final String email;
+  final String phoneNumber;
+  final String password;
+  //final int age;
   final DateTime inscriptionDate;
-  Profile profile;
-
+  //final GeoPoint localisation;
+  final Profile profile;
+  final DocumentReference reference;
 
   ///
   ///     CONSTRUCTORS
+  User.fromMap(Map<String, dynamic> map, {this.reference})
+      : assert(map['fullName'] != null),
+        assert(map['email'] != null),
+        assert(map['phoneNumber'] != null),
+        assert(map['password'] != null),
+        //assert(map['age'] > 15),
+        fullName = map['fullName'],
+        email = map['email'],
+        phoneNumber = map['phoneNumber'],
+        password = map['fullName'],
+        inscriptionDate = map['inscriptionDate'],
+        //localisation = map['localisation']
+        profile = map['profile'];
+
+  User.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data, reference: snapshot.reference);
+
+  User.create(this.fullName, this.email,
+      {this.phoneNumber,
+      this.password,
+      this.inscriptionDate,
+      this.profile,
+      this.reference});
+
   ///
-  User({this.firstName, this.lastName, this.fullName, this.inscriptionDate, this.profile}){
-    this.fullName = '$firstName $lastName';
-  }
-  User.create(this.firstName, this.lastName, this.inscriptionDate){
-    this.fullName = '$firstName $lastName' ;
-  }
-  User.fromJson({this.inscriptionDate});
-
-
-
   ///
-  ///     GETTERS AND SETTERS
-  ///
-  /*Profile get profile => _profile;
-
-  set profile(Profile value) {
-    _profile = value;
-  }
-
-  DateTime get birthDate => _inscriptionDate;
-
-  set birthDate(DateTime value) {
-    birthDate = value;
-  }
-
-  String get lastName => _lastName;
-
-  set lastName(String value) {
-    _lastName = value;
-  }
-
-  String get firstName => _firstName;
-
-  set firstName(String value) {
-    _firstName = value;
-  }
-
-  String get fullName => _fullName;
-
-  set fullName(String value){
-    _fullName = value;
-  }*/
-
-  String get inscrDate{
+  ///   GETTERS AND SETTERS
+  String get inscrDate {
     StringBuffer buffer = new StringBuffer();
     buffer.write(inscriptionDate.day);
     buffer.write('-');
@@ -70,18 +52,4 @@ class User{
 
     return buffer.toString();
   }
-
 }
-
-
-class Contact{
-
-  String _phoneNumber;
-  String _email;
-  String _city;
-
-  // Latitude et Longitude actuelles
-  // dernière position connue
-
-}
-

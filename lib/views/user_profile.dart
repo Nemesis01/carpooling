@@ -24,7 +24,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   final userProfileAppBarKey = new GlobalKey();
   ScrollController _scrollController;
 
-  final User _user = new User.create('Stéphane', 'Nton', DateTime.now());
+  final User _user =
+      new User.create('Stéphane Nton', 'Nton', inscriptionDate: DateTime.now());
 
   List<String> items = List.generate(100, (index) => "List Item $index");
 
@@ -106,13 +107,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             Strings.section_infos_title,
             icon: Icons.person,
             rowLabels: ['Member since :', 'E-mail :', 'Contact :'],
-            datas: [_user.inscrDate, _user.email, _user.phone],
+            datas: [_user.inscrDate, _user.email, _user.phoneNumber],
           ),
           InfosCard(
             Strings.section_activity_title,
             icon: Icons.multiline_chart,
             rowLabels: ['Completed Trips :', 'Passengers :', 'Crashes :'],
-            datas: [_user.firstName, _user.lastName, _user.fullName],
+            datas: [_user.fullName, _user.phoneNumber, _user.fullName],
           ),
           InfosCard(
             Strings.section_car_infos_title,
