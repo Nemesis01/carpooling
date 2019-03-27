@@ -12,10 +12,11 @@ class RegisterScreen extends StatefulWidget {
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-/// *****************************************************************
-///
-///
-/// *****************************************************************
+///**************************************************************************///
+///                                                                          ///
+///                                                                          ///
+///                                                                          ///
+///**************************************************************************///
 class _RegisterScreenState extends State<RegisterScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();

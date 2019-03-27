@@ -25,7 +25,6 @@ class _OfferScreenState extends State<OffersScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    /*
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('offers').snapshots(),
       builder: (context, snapshot) {
@@ -34,12 +33,13 @@ class _OfferScreenState extends State<OffersScreen> {
         return _buildList(context, snapshot.data.documents);
       },
     );
-    */
 
-    return FloatingActionButton(
+    //return _buildList(context, snapshot.data.documents);
+
+    /*return FloatingActionButton(
       child: Icon(Icons.add),
       onPressed: () {},
-    );
+    );*/
 
     /*return CustomScrollView(
       slivers: <Widget>[
@@ -77,24 +77,34 @@ class _OfferScreenState extends State<OffersScreen> {
       key: ValueKey(offer.offerer),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
-        decoration: BoxDecoration(
+        /*decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: ListTile(
-          isThreeLine: true,
-          title: Text(offer.offerer),
-          trailing: Text(offer.departure),
-          subtitle: Text(offer.destination),
-          onTap: () => Firestore.instance.runTransaction((transaction) async {
-                final freshSnapshot = await transaction.get(offer.reference);
-                final fresh = Offer.fromSnapshot(freshSnapshot);
-
-                await transaction.update(
-                    offer.reference, {'passengers': fresh.passengers + 1});
-              }),
+        ),*/
+        child: Card(
+          elevation: 4.0,
+          color: Colors.white,
+          //shape: Shape.
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const ListTile(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+/*isThreeLine: true,
+title: Text(offer.offerer),
+trailing: Text(offer.departure),
+subtitle: Text(offer.destination),
+onTap: () => Firestore.instance.runTransaction((transaction) async {
+final freshSnapshot = await transaction.get(offer.reference);
+final fresh = Offer.fromSnapshot(freshSnapshot);
+
+await transaction.update(
+offer.reference, {'passengers': fresh.passengers + 1});
+}),*/
