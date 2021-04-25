@@ -16,6 +16,15 @@ class Offer {
         destination = map['destination'],
         passengers = map['passengers'];
 
+  Offer.fromJson(Map<String, dynamic> json, {this.reference})
+      : assert(json['offerer'] != null),
+        assert(json['destination'] != null),
+        assert(json['departure'] != null),
+        offerer = json['offerer'],
+        departure = json['departure'],
+        destination = json['destination'],
+        passengers = json['passengers'];
+
   Offer.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
 

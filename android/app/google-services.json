@@ -25,15 +25,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331730970016-6cdmm0j9si42ns6qg23s1bjvqmsdfqlk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "331730970016-gkjsk9umrd4p57n562jqol83afrf8n1s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ca.uqtr.stephane.nton.carpooling"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,9 +1,8 @@
 name: carpooling
 description: Mobile carpooling application.
 
-
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -21,13 +20,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -37,8 +34,6 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
@@ -66,17 +61,30 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
 
-  fonts :
-    - family : EncodeCondensed
-      fonts :
-        - asset : assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Regular.ttf
-          style : normal
-        - asset : assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Light.ttf
-
-
-
+  fonts:
+    - family: EncodeCondensed
+      fonts:
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Regular.ttf
+          style: normal
+          weight: 400
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf
+          weight: 900
   #fonts:
-   # - family: EncodeSansCondensed
-    #fonts:
-     # - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Light.ttf
-      #- asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Regular.ttf
+  # - family: EncodeSansCondensed
+  #fonts:
+  # - asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Light.ttf
+  #- asset: assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Regular.ttf

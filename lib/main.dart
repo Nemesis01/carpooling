@@ -1,5 +1,7 @@
+import 'package:carpooling/themes/default_theme.dart';
 import 'package:carpooling/views/home.dart';
 import 'package:carpooling/views/login.dart';
+import 'package:carpooling/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,37 +11,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.black,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
-    ));
+    //SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+    //statusBarColor: Colors.black,
+    //statusBarBrightness: Brightness.light,
+    //statusBarIconBrightness: Brightness.light,
+    //));
 
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Carpooling Application',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        primaryColor: Colors.blue,
-        accentColor: Colors.white,
-        primaryColorDark: Colors.blueGrey,
-        splashColor: Colors.lightBlueAccent,
-        scaffoldBackgroundColor: Colors.white,
-        dividerColor: Colors.blueAccent,
-        fontFamily: "EncodeCondensed",
-        cardColor: Colors.white54,
-        buttonColor: Colors.blue,
-        buttonTheme: ButtonThemeData(
-          buttonColor: Colors.blue,
-          textTheme: ButtonTextTheme.primary,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          height: 40.0, //36.0
-        ),
-        //iconTheme: IconThemeData(size: 60.0)
-        // bottomAppBarColor: Colors.black,
-      ),
+      theme: defaultTheme(),
+
+      //iconTheme: IconThemeData(size: 60.0)
+      // bottomAppBarColor: Colors.black,
+
       routes: {
         '/': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),
