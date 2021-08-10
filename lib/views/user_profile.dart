@@ -1,12 +1,9 @@
-import 'package:carpooling/customs/animated_app_bar.dart';
-import 'package:carpooling/customs/profile_picture.dart';
-import 'package:carpooling/models/user.dart';
 import 'package:flutter/material.dart';
-import 'package:carpooling/res/dimens.dart';
-import 'package:carpooling/res/strings.dart';
-import 'package:carpooling/customs/card_user_infos.dart';
-import 'package:carpooling/customs/card_infos.dart';
 import 'package:flutter/services.dart';
+
+import 'package:carpooling/src/models/user.dart';
+import 'package:carpooling/src/resources/dimens.dart';
+import 'package:carpooling/src/resources/strings.dart';
 
 class UserProfileScreen extends StatefulWidget {
   ///
@@ -22,10 +19,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   ///
   final userProfileScaffoldKey = new GlobalKey<ScaffoldState>();
   final userProfileAppBarKey = new GlobalKey();
-  ScrollController _scrollController;
+  ScrollController? _scrollController;
 
-  final User _user =
-      new User.create('Stéphane Nton', 'Nton', inscriptionDate: DateTime.now());
+  //final User _user = User.Create();
 
   List<String> items = List.generate(100, (index) => "List Item $index");
 
@@ -59,12 +55,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   void initState() {
     super.initState();
     _scrollController = new ScrollController(initialScrollOffset: 54.0);
-    _scrollController.addListener(() => setState(() {}));
+    //_scrollController.addListener(() => setState(() {}));
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    //_scrollController.dispose();
     super.dispose();
   }
 
@@ -86,7 +82,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           )),
           Padding(padding: EdgeInsets.only(left: 16.0)),
           Text(
-            '${_user.fullName}',
+            '',
             style: TextStyle(color: Colors.black, fontSize: 20.0),
           ),
         ],
@@ -101,39 +97,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   Widget _buildBody() {
     return SliverList(
       delegate: SliverChildListDelegate(
-        [
-          ProfilePicture(_user),
-          InfosCard(
-            Strings.section_infos_title,
-            icon: Icons.person,
-            rowLabels: ['Member since :', 'E-mail :', 'Contact :'],
-            datas: [_user.inscrDate, _user.email, _user.phoneNumber],
-          ),
-          InfosCard(
-            Strings.section_activity_title,
-            icon: Icons.multiline_chart,
-            rowLabels: ['Completed Trips :', 'Passengers :', 'Crashes :'],
-            datas: [_user.fullName, _user.phoneNumber, _user.fullName],
-          ),
-          InfosCard(
-            Strings.section_car_infos_title,
-            icon: Icons.directions_car,
-            rowLabels: [
-              'Brand :',
-              'Model :',
-              'Color :',
-              'Year :',
-              'Matriculation :'
-            ],
-            datas: [
-              'Nissan',
-              'Maxima',
-              'Dark grey',
-              DateTime.now().year.toString(),
-              'G8Z 2C1'
-            ],
-          ),
-        ],
+        [],
       ),
     );
   }

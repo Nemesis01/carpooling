@@ -10,15 +10,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   final loginScaffoldKey = GlobalKey<ScaffoldState>();
   final loginFormKey = GlobalKey<FormState>();
 
-  http.Response response;
+  late http.Response response;
 
-  String _username;
-  String _password;
+  late String _username;
+  late String _password;
 
   @override
   void initState() {
@@ -79,9 +79,6 @@ class _LoginScreenState extends State<LoginScreen>
                     ),
                     new Text(
                       Constants.appName,
-                      style: new TextStyle(
-                        fontSize: Theme.of(context).textTheme.headline.fontSize,
-                      ),
                       textAlign: TextAlign.center,
                     ),
                     Padding(padding: EdgeInsets.all(8.0)),
@@ -91,9 +88,6 @@ class _LoginScreenState extends State<LoginScreen>
                         hintText: Constants.hintUserName,
                         icon: const Icon(Icons.perm_identity),
                       ),
-                      validator: (value) =>
-                          (value.isEmpty) ? 'Username can\'t be empty' : null,
-                      onSaved: (value) => _username = value,
                     ),
                     TextFormField(
                       decoration: InputDecoration(
@@ -103,11 +97,6 @@ class _LoginScreenState extends State<LoginScreen>
                         suffixIcon: const Icon(Icons.remove_red_eye),
                       ),
                       obscureText: true,
-                      validator: (value) => (value.length < 4)
-                          ? 'Your password is too short'
-                          : null,
-                      onSaved: (value) => _password = value,
-                      autovalidate: true,
                     ),
                     new Padding(padding: EdgeInsets.only(top: 16.0)),
                     new Container(
@@ -120,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen>
                         textColor: Colors.white,
                         //disabledColor: Colors.blue,
                         splashColor: Colors.lightBlueAccent,
-                        onPressed: _submit,
+                        onPressed: () {},
                       ),
                     ),
                   ],
@@ -131,15 +120,16 @@ class _LoginScreenState extends State<LoginScreen>
         ));
   }
 
-  void _submit() {
+  /* void _submit() {
     final form = loginFormKey.currentState;
     if (form.validate()) {
       form.save();
-     // _login();
+      // _login();
       _performLogin();
     }
-  }
+  }*/
 
+/*
   void _performLogin() {
     // show progressbar or something like that to show
     // an interaction to the user.
@@ -151,10 +141,12 @@ class _LoginScreenState extends State<LoginScreen>
 
     Navigator.pushNamed(context, '/home');
   }
+*/
 
+/*
   Future<List> _login() async {
     final resp = await http.post(
-      "http://192.168.2.11/comodo_app/login.php",
+      Uri(),
       /*body:{
       "username": _username,
       "password": _password,
@@ -163,7 +155,8 @@ class _LoginScreenState extends State<LoginScreen>
 
     if (resp.statusCode == 200) {
       final snackBar = SnackBar(content: Text(resp.body));
-      loginScaffoldKey.currentState.showSnackBar(snackBar);
+      //loginScaffoldKey.currentState.showSnackBar(snackBar);
     }
   }
+*/
 }

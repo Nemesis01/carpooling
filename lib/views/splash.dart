@@ -1,4 +1,4 @@
-import 'package:carpooling/res/strings.dart';
+import 'package:carpooling/src/resources/strings.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -30,9 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              Strings.app_name,
+              app_name,
               style:
-                  Theme.of(context).textTheme.headline.copyWith(fontSize: 38),
+                  Theme.of(context).textTheme.headline6!.copyWith(fontSize: 38),
             ),
           ],
         ),

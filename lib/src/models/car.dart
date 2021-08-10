@@ -13,7 +13,7 @@ class Car {
 
   ///
   ///
-  Car.fromMap(Map<String, dynamic> map, {this.reference})
+  Car.fromMap(Map<dynamic, dynamic> map, {required this.reference})
       : assert(map['brand'] != null),
         assert(map['model'] != null),
         assert(map['matriculationNumber'] != null),
@@ -25,7 +25,7 @@ class Car {
         places = map['places'];
 
   Car.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
+      : this.fromMap(snapshot.data() as Map, reference: snapshot.reference);
 
   ///
   ///
