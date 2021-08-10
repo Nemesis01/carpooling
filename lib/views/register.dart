@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:carpooling/res/strings.dart';
+import 'package:carpooling/src/resources/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -29,10 +29,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
 
-  FocusNode _fullNameFocusNode;
-  FocusNode _phoneFocusNode;
-  FocusNode _emailFocusNode;
-  FocusNode _passwordFocusNode;
+  late FocusNode _fullNameFocusNode;
+  late FocusNode _phoneFocusNode;
+  late FocusNode _emailFocusNode;
+  late FocusNode _passwordFocusNode;
 
   bool _autoObscure = true;
 
@@ -43,7 +43,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
-
     _fullNameFocusNode = FocusNode();
     _phoneFocusNode = FocusNode();
     _emailFocusNode = FocusNode();
@@ -66,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
-          Strings.title_register_screen,
+          title_register_screen,
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0.0,
@@ -104,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Padding(
             padding: EdgeInsets.only(top: 32.0, bottom: 12.0),
             child: Text(
-              Strings.app_name,
+              app_name,
               style: TextStyle(fontSize: 32),
             ),
           ),
@@ -113,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             focusNode: _fullNameFocusNode,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.person_outline, size: 24.0),
-              labelText: Strings.label_full_name,
+              labelText: label_full_name,
               isDense: true,
               border: OutlineInputBorder(),
             ),
@@ -121,12 +120,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.text,
             controller: _fullNameController,
-            validator: _validateFullname,
+            //validator: _validateFullname,
             onFieldSubmitted: (value) {
               _onFocusChange(context, _fullNameFocusNode, _phoneFocusNode);
-            },
-            onSaved: (String value) {
-              this._userDatas.fullName = value;
             },
           ),
           Padding(padding: EdgeInsets.all(6.0)),
@@ -134,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             focusNode: _phoneFocusNode,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.phone, size: 24.0),
-              labelText: Strings.label_contact,
+              labelText: label_contact,
               border: OutlineInputBorder(),
               isDense: true,
             ),
@@ -144,16 +140,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             onFieldSubmitted: (value) {
               _onFocusChange(context, _phoneFocusNode, _emailFocusNode);
             },
-            onSaved: (String value) {
-              this._userDatas.phoneNumber = value;
-            },
           ),
           Padding(padding: EdgeInsets.all(6.0)),
           TextFormField(
             focusNode: _emailFocusNode,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.mail_outline, size: 24.0),
-              labelText: Strings.label_email,
+              labelText: label_email,
               border: OutlineInputBorder(),
               isDense: true,
             ),
@@ -162,9 +155,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             controller: _emailController,
             onFieldSubmitted: (value) {
               _onFocusChange(context, _emailFocusNode, _passwordFocusNode);
-            },
-            onSaved: (String value) {
-              this._userDatas.email = value;
             },
           ),
           Padding(padding: EdgeInsets.all(6.0)),
@@ -179,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   _togglePasswordVisibility();
                 },
               ),
-              labelText: Strings.label_password,
+              labelText: label_password,
               isDense: true,
               border: OutlineInputBorder(gapPadding: 0.0),
             ),
@@ -188,19 +178,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             obscureText: _autoObscure,
             controller: _passwordController,
             //onFieldSubmitted: (value){_onFocusChange(context, , nextNode)},
-            onSaved: (String value) {
-              this._userDatas.password = value;
-            },
           ),
           Padding(padding: EdgeInsets.only(top: 16.0)),
           RaisedButton(
-            child: Text(Strings.btn_register.toUpperCase()),
+            child: Text(btn_register.toUpperCase()),
             //shape: RoundedRectangleBorder(
             //  borderRadius: BorderRadius.circular(15.0)),
-            onPressed: _register,
+            onPressed: () {},
           ),
           FlatButton(
-            child: Text(Strings.btn_go_to_login,
+            child: Text(btn_go_to_login,
                 style: TextStyle(
                     decoration: TextDecoration.underline, color: Colors.black)),
             onPressed: null,
@@ -249,10 +236,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _validateFullname(String value) {
     if (value.trim().isEmpty)
-      return Strings.error_empty_field;
+      return error_empty_field;
     else {
-      return (value.trim().length < 3) ? Strings.error_input_too_short : null;
+      //return (value.trim().length < 3) ? error_input_too_short : null;
     }
+    return '';
   }
 
   bool isFormFilled() {
@@ -260,15 +248,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void _submitField() {
-    if (_formKey.currentState.validate()) return null;
+    //if (_formKey.currentState.validate()) return null;
   }
 
-  Future<String> _register() async {
+  /* Future<String> _register() async {
     // Verify if form is correctly filled
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       var response = await http.post(
-        Uri.encodeFull("http://192.168.2.11/comodo_app/create_account.php"),
+        Uri(),
+        //Uri.encodeFull('').toString(),
         body: {
           "fullName": this._userDatas.fullName,
           "phoneNumber": this._userDatas.phoneNumber,
@@ -283,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           SnackBar(content: Text(response.statusCode.toString())));
       return response.statusCode.toString();
     }
-  }
+  }*/
 }
 
 class _RegisterData {

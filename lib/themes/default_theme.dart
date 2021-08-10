@@ -1,19 +1,24 @@
 import 'package:carpooling/themes/text_theme.dart';
+import 'package:carpooling/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData defaultTheme() {
   return ThemeData(
-    //primarySwatch: Colors.blue,
+    //primarySwatch: Colors.white,
     //brightness: Brightness.,
     primaryColor: Colors.white,
-    accentColor: Colors.deepOrange,
+    accentColor: Colors.deepPurpleAccent,
+    canvasColor: Colors.white,
     //primaryColorDark: Colors.blueGrey,
-    //splashColor: Colors.lightBlueAccent,
-    scaffoldBackgroundColor: Colors.white,
+    //splashColor: Colors.deepOrangeAccent,
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
     dividerColor: Colors.blueAccent,
     fontFamily: "EncodeCondensed",
-    cardColor: Colors.white54,
     buttonColor: Colors.blue,
+    iconTheme: IconThemeData(
+      color: Colors.deepPurpleAccent,
+    ),
+    accentIconTheme: IconThemeData(color: Colors.deepPurpleAccent),
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.blue,
       textTheme: ButtonTextTheme.primary,

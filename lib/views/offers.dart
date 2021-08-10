@@ -1,4 +1,8 @@
-import 'package:carpooling/models/offer.dart';
+import 'package:carpooling/src/models/offer.dart';
+import 'package:carpooling/src/models/user.dart';
+import 'package:carpooling/src/resources/strings.dart';
+import 'package:carpooling/views/ui/offer_view.dart';
+import 'package:carpooling/views/ui/screen_base.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -9,102 +13,74 @@ final dummySnapshot = [
   {"offerer": "Serge", "departure": "NY", "destination": "MTL"},
 ];
 
-class OffersScreen extends StatefulWidget {
-  @override
-  _OfferScreenState createState() => _OfferScreenState();
-}
-
-class _OfferScreenState extends State<OffersScreen> {
-  @override
+class OffersScreen extends BaseScreen {
+  /* @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: _buildBody(context),
-      ),
-    );
-  }
+    return Scaffold();
+  }*/
 
-  Widget _buildBody(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('offers').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
+  @override
+  Widget mediumScreenLayout(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        top: true,
+        bottom: true,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              var offer = dummySnapshot[index];
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: OfferView(
+                  offerer: 'Stephane Nton',
+                  name: 'Stéphane Nton',
+                  onTap: () {
+                    print('Offer tapped tile');
 
-        return _buildList(context, snapshot.data.documents);
-      },
-    );
-
-    //return _buildList(context, snapshot.data.documents);
-
-    /*return FloatingActionButton(
-      child: Icon(Icons.add),
-      onPressed: () {},
-    );*/
-
-    /*return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          expandedHeight: 200.0,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Container(
-                //color: Colors.white,
+                    Navigator.of(context).pushNamed(offerDetailRoute);
+                  },
                 ),
-            title: Text(Constants.menu_offers),
-          ),
-          floating: false,
-          pinned: true,
-        ),
-        /*SliverList(
-          delegate: SliverChildListDelegate(
-            [_buildList(context, dummySnapshot)],
-          ),
-        ),*/
-      ],
-    );*/
-  }
-
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return ListView(
-      padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
-    );
-  }
-
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final offer = Offer.fromSnapshot(data);
-
-    return Padding(
-      key: ValueKey(offer.offerer),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        /*decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0),
-        ),*/
-        child: Card(
-          elevation: 4.0,
-          color: Colors.white,
-          //shape: Shape.
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const ListTile(),
-            ],
+              );
+            },
           ),
         ),
       ),
     );
+  }
+
+  @override
+  Widget smallScreenLayout(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        top: true,
+        bottom: true,
+        child: Container(
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            itemCount: dummySnapshot.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: OfferView(
+                  offerer: 'StephaneNton',
+                  name: 'Stéphane Nton',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(offerDetailRoute);
+                    print('Offer tapped tile');
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget wideScreenLayout(BuildContext context) {
+    // TODO: implement wideScreenLayout
+    throw UnimplementedError();
   }
 }
-
-/*isThreeLine: true,
-title: Text(offer.offerer),
-trailing: Text(offer.departure),
-subtitle: Text(offer.destination),
-onTap: () => Firestore.instance.runTransaction((transaction) async {
-final freshSnapshot = await transaction.get(offer.reference);
-final fresh = Offer.fromSnapshot(freshSnapshot);
-
-await transaction.update(
-offer.reference, {'passengers': fresh.passengers + 1});
-}),*/

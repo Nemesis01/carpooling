@@ -15,7 +15,7 @@ class _LoginRegisterScreen extends State<LoginRegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Container();
   }
 
   @override
